@@ -18,6 +18,14 @@ class GameTwoViewController: UIViewController {
         loadHtmlGame()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        appDelegate.deviceOrientation = .landscape
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
     func loadHtmlGame() {
         
         let localGame = Bundle.main.url(forResource: "game2/index", withExtension:"html")

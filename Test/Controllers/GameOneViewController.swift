@@ -18,11 +18,18 @@ class GameOneViewController: UIViewController {
         loadHtmlGame()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        appDelegate.deviceOrientation = .landscape
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
     func loadHtmlGame() {
         
         let localGame = Bundle.main.url(forResource: "game1/index", withExtension:"html")
         let request = NSURLRequest(url: localGame!)
         webView.loadRequest(request as URLRequest)
-        
     }
 }
